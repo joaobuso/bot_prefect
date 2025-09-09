@@ -11,7 +11,7 @@ from os import path
 from selenium.webdriver.ie.options import Options as IeOptions
 from selenium.webdriver.ie.service import Service as IeService
 
-from bot import config
+from config import *
 
 class function_web:
     def open_browser_edge_ie_mode():
@@ -29,7 +29,7 @@ class function_web:
         
         # 3. Define o caminho para o EXECUTÁVEL do Edge (não o driver)
         # Isso informa ao IEDriver qual navegador Edge ele deve iniciar
-        ie_options.edge_executable_path = config.path_edge_executable # Ex: "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+        ie_options.edge_executable_path = path_edge_executable # Ex: "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
 
         # Adiciona as outras opções que você já usava para o IE
         ie_options.ignore_protected_mode_settings = True
@@ -40,7 +40,7 @@ class function_web:
 
         # 4. O serviço que vamos usar é o do IEDriverServer.exe
         # O msedgedriver.exe não é chamado diretamente nesta abordagem
-        service = IeService(executable_path=config.path_ie_drive)
+        service = IeService(executable_path=path_ie_drive)
 
         # 5. Inicializamos o webdriver.Ie, não o webdriver.Edge
         print("Abrindo navegador Edge via IEDriver...")
@@ -48,7 +48,7 @@ class function_web:
 
         # A partir daqui, o código é o mesmo
         print("Navegador aberto com sucesso!")
-        driver.get(config.url_AdmSite)
+        driver.get(url_AdmSite)
         driver.maximize_window()
 
         print("Realizando login...")
@@ -56,10 +56,10 @@ class function_web:
             user_element = WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.NAME, "strUsuario"))
             )
-            driver.execute_script("arguments[0].value = arguments[1];", user_element, config.user_AdmSite)
+            driver.execute_script("arguments[0].value = arguments[1];", user_element, user_AdmSite)
 
             pass_element = driver.find_element(By.NAME, "strSenha")
-            driver.execute_script("arguments[0].value = arguments[1];", pass_element, config.pwd_AdmSite)
+            driver.execute_script("arguments[0].value = arguments[1];", pass_element, pwd_AdmSite)
 
             time.sleep(1)
             

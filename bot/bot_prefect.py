@@ -15,7 +15,7 @@ from typing import Optional
 from prefect import flow, task, get_run_logger
 from prefect.logging import get_logger
 
-from bot.functions_process import function_web
+from functions_process import function_web
 
 # Configuração do sistema de logs
 def configurar_logging():
