@@ -15,6 +15,7 @@ from typing import Optional
 from prefect import flow, task, get_run_logger
 from prefect.logging import get_logger
 
+from bot.functions_process import function_web
 
 # Configuração do sistema de logs
 def configurar_logging():
@@ -83,6 +84,8 @@ def executar_logica_principal(configuracoes: dict) -> dict:
         # Aqui você pode adicionar sua lógica específica do bot
         # Por exemplo: processar dados, fazer requisições API, etc.
         
+        driver = function_web.open_browser_edge_ie_mode()
+
         # Simulação de processamento
         import time
         time.sleep(2)  # Simula processamento
