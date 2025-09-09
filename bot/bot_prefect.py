@@ -15,6 +15,7 @@ from typing import Optional
 from prefect import flow, task, get_run_logger
 from prefect.logging import get_logger
 
+
 # Configuração do sistema de logs
 def configurar_logging():
     """Configura o sistema de logging para o bot."""
@@ -190,6 +191,7 @@ def executar_bot():
     agora = datetime.datetime.now()
     mensagem = f"Bot rodando às {agora}"
     task_logger.info(mensagem)
+    task_logger.info(f"Log teste {datetime.datetime.now()}")
     print(mensagem)  # Mantém compatibilidade com o código original
     return mensagem
 
